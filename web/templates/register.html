@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block title %} Register {% endblock %}
+{% block navi %}{% endblock %}
+{% block body %}
+{% if error %}<div>Error:{{ error }}</div>{% endif %}
+<form method="post" class="form-horizontal" role="form">
+    <div class="form-group">
+        <label for="username" class="col-sm-2 control-label"> username: </label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" id="username" name="username" placeholder="please enter username">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="pwd" class="col-sm-2 control-label"> password: </label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" id="pwd" name="pwd" placeholder="please enter password">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-2">
+            <button type="submit" class="btn btn-default">Sign up</button>
+        </div>
+                <div class="col-sm-6">
+            <button type="reset" class="btn btn-default">reset</button>
+        </div>
+    </div>
+
+</form>
+{% endblock %}

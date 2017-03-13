@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="https://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+</head>
+<body>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{{ url_for('public')}}">Test log</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="{{ url_for('edit')}}"><span class="glyphicon glyphicon-user"></span> new blog</a></li>
+                <li><a href="{{ url_for('login')}}"><span class="glyphicon glyphicon-log-in"></span> log in</a></li>
+            </ul>
+        </div>
+    </nav>
+    {% for message in messages %}
+    <div class="list-group">
+        <a href="{{url_for('public')}}" class="list-group-item active">
+            <h4 class="list-group-tiem-heading">
+                {{message.title}}
+            </h4>
+        </a>
+        <a href="{{url_for('public')}}" class="list-group-item">
+            <h4 class="list-group-tiem-heading">
+                {{message.content}}
+            </h4>
+            <p class="list-group-item-text">
+                {{message.time|timeformat}} {{ message.username}}
+            </p>
+        </a>
+    </div>
+    {% endfor %}
+
+</body>
+</html>

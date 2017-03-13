@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block logout %}
+{% if g.user %}
+ <li><a href="{{ url_for('logout')}} "><span class="glyphicon glyphicon-log-in">
+                </span> log out </a></li>
+
+{% else %}
+ <li><a href="{{ url_for('login')}} "><span class="glyphicon glyphicon-log-in">
+                </span> log in </a></li>
+
+{% endif %}
+{% endblock %}
+{% block body %}
+
+    {% for message in messages %}
+    <div class="list-group">
+        <a href="{{url_for('blog', id = message.b_id)}}" class="list-group-item active">
+            <h4 class="list-group-tiem-heading">
+                {{message.title}}
+            </h4>
+        </a>
+        <a href="{{url_for('blog', id = message.b_id)}}" class="list-group-item">
+            <h4 class="list-group-tiem-heading">
+                {{message.content}}
+            </h4>
+            <p class="list-group-item-text">
+                {{message.time|timeformat}} {{ message.username}}
+            </p>
+        </a>
+    </div>
+    {% endfor %}
+{% endblock %}

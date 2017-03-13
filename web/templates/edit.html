@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block title %} Edit {% endblock %}
+{% block navi %}{% endblock %}
+{% block body %}
+{% if error %}<div>Error:{{ error }}</div>{% endif %}
+<form method="post" class="form-horizontal" role="form">
+    <div class="form-group">
+        <label for="title" class="col-sm-2 control-label"> title: </label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" id="title" name="title" placeholder="please enter title">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="content" class="col-sm-2 control-label"> content: </label>
+        <div class="col-sm-6">
+            <textarea rows="3" class="form-control" id="content" name="content" placeholder="please enter content"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-2">
+            <button type="submit" class="btn btn-default">ok</button>
+        </div>
+                <div class="col-sm-6">
+            <button type="reset" class="btn btn-default">reset</button>
+        </div>
+    </div>
+
+</form>
+{% endblock %}

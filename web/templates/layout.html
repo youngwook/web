@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="https://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+</head>
+<body>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{{ url_for('public')}}">{% block title %} Test log {% endblock%}</a>
+            </div>
+            {% block navi %}
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="{{ url_for('edit')}}"><span class="glyphicon glyphicon-user"></span>{% block edit%} new blog {% endblock %}</a></li>
+                {% block logout %}
+                <li><a href="{{ url_for('login')}} "><span class="glyphicon glyphicon-log-in">
+                </span>log in </a></li>
+                {% endblock %}
+            </ul>
+            {% endblock%}
+        </div>
+    </nav>
+    {% block body %}
+    <div class="list-group">
+        <a href="{{url_for('public')}}" class="list-group-item active">
+            <h4 class="list-group-tiem-heading">
+                title
+            </h4>
+        </a>
+        <a href="{{url_for('public')}}" class="list-group-item">
+            <h4 class="list-group-tiem-heading">
+                text
+            </h4>
+            <p class="list-group-item-text">
+                date
+            </p>
+        </a>
+    </div>
+    {% endblock%}
+
+{% with flashes = get_flashed_messages() %}
+    {% if flashes %}
+        <ul class="flashes">
+            {% for message in flashes %}
+                <li>
+                    {{ message }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+</body>
+</html>
